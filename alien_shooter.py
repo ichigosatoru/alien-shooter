@@ -49,6 +49,8 @@ class AlienInvasion:
         # Create an instance to store game statistics, scoreboard, an instance of ship and bullets.
         self.stats = GameStats(self)
         self.sb = Scoreboard(self)
+        # Load high score from JSON file
+        self.stats.high_score = self.high_scores_manager.get_high_scores()[0]['score'] if self.high_scores_manager.get_high_scores() else 0
         self.game_over_screen = GameOverScreen(self)
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -59,7 +61,7 @@ class AlienInvasion:
         # Set the background color.
         self.bg_color = (230,230,230)#RGB % of red green blue
 
-       # Start Alien Invasion in an inactive state.
+        # Start Alien Invasion in an inactive state.
         self.game_active = False
         
         # Make the Play button.
@@ -343,7 +345,7 @@ class AlienInvasion:
         self.aliens.add(new_alien)
         
     
-        
+         
 
     
 #main program
